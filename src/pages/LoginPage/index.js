@@ -16,7 +16,7 @@ const LoginPage = () => {
     useEffect(() => {
         const token = window.localStorage.getItem('token');
         if (token) {
-            history.replace('/feed');
+            history.replace('/navers');
         }
     },[history]);
 
@@ -29,15 +29,17 @@ const LoginPage = () => {
         };
     
         try {
-            const response = await api.post(`/users/login`, body)
+            const response = await api.post(`/users/login`, body);
     
-            window.localStorage.setItem("token", response.data.token)
-            history.replace("/feed")
+            window.localStorage.setItem("token", response.data.token);
+            history.replace("/navers");
         } catch (e) {
             if (e.response.status === 400) {
-                setError("Email e/ou senha inválido(s)")
+                setError("Email e senha incorretos");
+            } else if (e.response.status === 401) {
+                setError("Senha incorreta");
             } else {
-                alert("Login falhou :(")
+                alert("Login falhou :(");
             }
         };
     };
