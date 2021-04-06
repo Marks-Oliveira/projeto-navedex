@@ -5,6 +5,7 @@ export const Wrapper = styled.main`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 1rem;
 `
 
 export const Logo = styled.article`
@@ -12,7 +13,6 @@ export const Logo = styled.article`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: .8rem;
 
     span {
         font-size: 2rem;
@@ -26,10 +26,14 @@ export const ExitButton = styled.article`
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     span {
-        font-size: 1rem;
-        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: .9rem;
+        line-height: 24px;
+
         color: #212121; 
         cursor: pointer;
     }

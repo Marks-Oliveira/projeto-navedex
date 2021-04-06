@@ -35,7 +35,7 @@ const LoginPage = () => {
             history.replace("/navers");
         } catch (e) {
             if (e.response.status === 400) {
-                setError("Email e senha incorretos");
+                setError("Email e/ou senha incorreto(s)");
             } else if (e.response.status === 401) {
                 setError("Senha incorreta");
             } else {
