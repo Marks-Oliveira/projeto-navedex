@@ -37,7 +37,7 @@ const HomePage = () => {
             setNavers(response.data);
         } catch (error) {
             alert("Erro ao carregar lista de navers :(");
-        }
+        };
     };
 
     return (
@@ -58,9 +58,13 @@ const HomePage = () => {
                     </Button>
                 </S.TextAndButton>
                 <S.Cards>
-                    {navers ? navers.map((item) => {
-                        return <NaveCard key={item.id} item={item} /> 
-                    })
+                    {navers ? 
+                        navers.map((item, index) => {
+                            return <NaveCard 
+                                key={index} 
+                                item={item}
+                            /> 
+                        })
                     : null}
                 </S.Cards>
             </S.Container>
