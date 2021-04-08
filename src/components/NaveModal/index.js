@@ -5,7 +5,7 @@ import * as S from './styles';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 
-const NaveModal = ({item, displayModal, displayModalExclude}) => {
+const NaveModal = ({item, displayModal, displayModalDeleteNave}) => {
     const yearsInTheCompany = moment().diff(item.admission_date, 'years');
     const monthsInTheCompany = moment().diff(item.admission_date, 'months');
     const months = monthsInTheCompany % 12;
@@ -42,7 +42,7 @@ const NaveModal = ({item, displayModal, displayModalExclude}) => {
                                 marginRight: '.5rem', 
                                 cursor: 'pointer'
                             }}
-                            onClick={displayModalExclude}
+                            onClick={displayModalDeleteNave}
                         />
                         <EditSharpIcon style={{ color: '#212121', cursor: 'pointer' }} />
                     </S.Buttons>

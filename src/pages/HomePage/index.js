@@ -22,7 +22,7 @@ const HomePage = () => {
 
     useEffect(() => {
         getNavers();
-    }, [navers]);
+    }, []);
 
     const getNavers = async () => {
         const headers = {
@@ -40,6 +40,10 @@ const HomePage = () => {
         };
     };
 
+    const goToCreateNavePage = () => {
+        history.push('/navers/create');
+    };
+
     return (
         <S.Wrapper>
             <Header />
@@ -53,6 +57,7 @@ const HomePage = () => {
                         }}
                         variant="contained"
                         size="medium"
+                        onClick={goToCreateNavePage}
                     >
                         Adicionar Naver
                     </Button>
@@ -63,6 +68,7 @@ const HomePage = () => {
                             return <NaveCard 
                                 key={index} 
                                 item={item}
+                                getNavers={() => getNavers()}
                             /> 
                         })
                     : null}

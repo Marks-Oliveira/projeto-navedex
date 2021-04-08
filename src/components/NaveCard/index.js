@@ -1,27 +1,33 @@
 import React, { useState } from 'react';
 
 import NaveModal from '../NaveModal';
-import ExcludesNaveModal from '../ExcludesNaveModal';
+import DeleteNaveModal from '../DeleteNaveModal';
+import ConfirmDeleteModal from '../ConfirmDeleteModal';
 
 import * as S from './styles';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 
-const NaveCard = ({item}) => {
+const NaveCard = ({ item, getNavers }) => {
     const [displayModal, setDisplayModal] = useState(false);
-    const [displayModalExcludeNave, setDisplayModalExcludeNave] = useState(false);
+    const [displayModalDeleteNave, setDisplayModalDeleteNave] = useState(false);
+    const [displayConfirmDelete, setDisplayConfirmDelete] = useState(false);
 
     const handleDisplayModal = () => {
         setDisplayModal(!displayModal);
     };
-
-    const handleExcludeNave = () => {
+    
+    const handleDeleteNave = () => {
         if (displayModal) {
             handleDisplayModal();
-            setDisplayModalExcludeNave(!displayModalExcludeNave);
+            setDisplayModalDeleteNave(!displayModalDeleteNave);
         } else {
-            setDisplayModalExcludeNave(!displayModalExcludeNave);
+            setDisplayModalDeleteNave(!displayModalDeleteNave);
         }
+    };
+    
+    const confirmDelete = () => {
+        setDisplayConfirmDelete(!displayConfirmDelete);
     };
 
     return (
@@ -40,7 +46,7 @@ const NaveCard = ({item}) => {
                         marginRight: '.5rem', 
                         cursor: 'pointer' 
                     }}
-                    onClick={handleExcludeNave}
+                    onClick={handleDeleteNave}
                 />
                 <EditSharpIcon 
                     style={{ 
@@ -53,15 +59,24 @@ const NaveCard = ({item}) => {
                 <NaveModal 
                     item={item}
                     displayModal={() => handleDisplayModal()}
-                    displayModalExclude={() => handleExcludeNave()}
+                    displayModalDeleteNave={() => handleDeleteNave()}
                 /> 
                 : null
             }
 
-            {displayModalExcludeNave ? 
-                <ExcludesNaveModal 
+            {displayModalDeleteNave ? 
+                <DeleteNaveModal 
                     naverId={item.id}
-                    displayModalExclude={() => handleExcludeNave()}
+                    displayModalDeleteNave={() => handleDeleteNave()}
+                    displayConfirmDelete={() => confirmDelete()}
+                    getNavers={getNavers}
+                /> 
+                : null
+            }
+
+            {displayConfirmDelete ? 
+                <ConfirmDeleteModal
+                    displayConfirmDelete={() => confirmDelete()}
                 /> 
                 : null
             }

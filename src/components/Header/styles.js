@@ -18,7 +18,8 @@ export const Logo = styled.article`
         font-size: 2rem;
         font-weight: bolder;
         color: #212121;
-        margin-bottom: 8px; 
+        margin-bottom: 8px;
+        cursor: pointer;
     }
 `
 

@@ -5,7 +5,13 @@ import api from '../../services/api';
 import * as S from './styles';
 import Button from '@material-ui/core/Button';
 
-const ExcludesNaveModal = ({displayModalExclude, naverId}) => {
+const DeleteNaveModal = ({
+    displayModalDeleteNave, 
+    displayConfirmDelete, 
+    naverId,
+    getNavers
+}) => {
+
     const token = window.localStorage.getItem('token');
 
     const handleDeleteNaver = async () => {
@@ -17,7 +23,9 @@ const ExcludesNaveModal = ({displayModalExclude, naverId}) => {
 
         try {
             await api.delete(`/navers/${naverId}`, headers);
-            displayModalExclude();
+            displayModalDeleteNave();
+            getNavers();
+            displayConfirmDelete();
         } catch (error) {
             alert("Erro ao excluir naver :(");
         };
@@ -39,7 +47,7 @@ const ExcludesNaveModal = ({displayModalExclude, naverId}) => {
                             }}
                             variant="contained"
                             size="medium"
-                            onClick={displayModalExclude}
+                            onClick={displayModalDeleteNave}
                         >
                             Cancelar
                         </Button>
@@ -63,4 +71,4 @@ const ExcludesNaveModal = ({displayModalExclude, naverId}) => {
     );
 };
 
-export default ExcludesNaveModal;
+export default DeleteNaveModal;

@@ -14,8 +14,8 @@ export const Wrapper = styled.main`
 `
 
 export const Container = styled.section`
-    width: 40%;
-    height: 34%;
+    width: 43.5%;
+    height: 35.5%;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@ export const Buttons = styled.article`
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding-top: 2rem;
+    padding-top: 2.5rem;
 `
 
 export const ButtonsContent = styled.div`
