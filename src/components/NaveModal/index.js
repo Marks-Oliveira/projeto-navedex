@@ -1,14 +1,22 @@
 import React from 'react';
 import moment from 'moment';
+import { useHistory } from 'react-router';
 
 import * as S from './styles';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 
-const NaveModal = ({item, displayModal, displayModalDeleteNave}) => {
+const NaveModal = ({ item, displayModal, displayModalDeleteNave }) => {
+    const history = useHistory()
+
     const yearsInTheCompany = moment().diff(item.admission_date, 'years');
     const monthsInTheCompany = moment().diff(item.admission_date, 'months');
     const months = monthsInTheCompany % 12;
+
+    const goToEditNavePage = () => {
+        history.push(`/navers/edit/${item.id}`);
+        displayModal();
+    };
 
     return (
         <S.Wrapper>
@@ -44,7 +52,13 @@ const NaveModal = ({item, displayModal, displayModalDeleteNave}) => {
                             }}
                             onClick={displayModalDeleteNave}
                         />
-                        <EditSharpIcon style={{ color: '#212121', cursor: 'pointer' }} />
+                        <EditSharpIcon 
+                            style={{ 
+                                color: '#212121', 
+                                cursor: 'pointer' 
+                            }} 
+                            onClick={goToEditNavePage}
+                        />
                     </S.Buttons>
                 </S.NaveInfos>
             </S.Container>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 
 import NaveModal from '../NaveModal';
 import DeleteNaveModal from '../DeleteNaveModal';
@@ -12,6 +13,7 @@ const NaveCard = ({ item, getNavers }) => {
     const [displayModal, setDisplayModal] = useState(false);
     const [displayModalDeleteNave, setDisplayModalDeleteNave] = useState(false);
     const [displayConfirmDelete, setDisplayConfirmDelete] = useState(false);
+    const history = useHistory()
 
     const handleDisplayModal = () => {
         setDisplayModal(!displayModal);
@@ -30,9 +32,13 @@ const NaveCard = ({ item, getNavers }) => {
         setDisplayConfirmDelete(!displayConfirmDelete);
     };
 
+    const goToEditNavePage = () => {
+        history.push(`/navers/edit/${item.id}`)
+    };
+
     return (
         <S.Wrapper>
-            <S.NavePhoto style={{ cursor: 'pointer' }}>
+            <S.NavePhoto>
                 <img src={item.url} onClick={handleDisplayModal} alt="Imagem Navers" />
             </S.NavePhoto>
             <S.NameAndOffice>
@@ -52,7 +58,8 @@ const NaveCard = ({ item, getNavers }) => {
                     style={{ 
                         color: '#212121', 
                         cursor: 'pointer' 
-                    }} 
+                    }}
+                    onClick={goToEditNavePage}
                 />
             </S.Buttons>
             {displayModal ? 

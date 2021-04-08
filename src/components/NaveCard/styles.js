@@ -9,6 +9,8 @@ export const Wrapper = styled.main`
 `
 
 export const NavePhoto = styled.article`
+    cursor: pointer;
+
     img {
         width: 100%;
         height: 43vh;
