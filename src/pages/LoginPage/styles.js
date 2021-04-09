@@ -8,13 +8,28 @@ export const Wrapper = styled.main`
 `
 
 export const Container = styled.section`
-    width: 448px;
-    height: 408px;
+    width: 33vw;
+    height: 62vh;
     border: 1px solid #212121;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media(max-width: 1080px) {
+        width: 45%;
+        height: 48%;
+    }
+
+    @media(max-width: 720px) {
+        width: 55%;
+        height: 48%;
+    }
+
+    @media(max-width: 420px) {
+        width: 85%;
+        height: 43.8%;
+    }
 `
 
 export const Title = styled.article`
@@ -25,11 +40,36 @@ export const Title = styled.article`
     padding-top: 3rem;
     padding-bottom: 2rem;
 
+    @media(max-width: 1080px) {
+        width: 40%;
+    }
+
+    @media(max-width: 720px) {
+        width: 40%;
+    }
+
+    @media(max-width: 420px) {
+        width: 45%;
+        padding-top: 2rem;
+    }
+
     span {
         font-size: 2.8rem;
         font-weight: bolder;
         color: #212121;
-        margin-bottom: 8px; 
+        margin-bottom: .5rem;
+
+        @media(max-width: 1080px) {
+            font-size: 2.3rem;
+        }
+
+        @media(max-width: 720px) {
+            font-size: 1.6rem;
+        }
+
+        @media(max-width: 420px) {
+            font-size: 1.4rem;
+        }
     }
 `
 
@@ -47,5 +87,9 @@ export const ErrorWarning = styled.div`
 `
 
 export const EnterButton = styled.article`
-    padding-top: 4px;
+    margin-top: .3rem;
+
+    @media(max-width: 420px) {
+        margin-top: .1rem;
+    }
 `

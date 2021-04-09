@@ -16,7 +16,7 @@ const LoginPage = () => {
     useEffect(() => {
         const token = window.localStorage.getItem('token');
         if (token) {
-            history.replace('/feed');
+            history.replace('/navers');
         }
     },[history]);
 
@@ -29,24 +29,26 @@ const LoginPage = () => {
         };
     
         try {
-            const response = await api.post(`/users/login`, body)
+            const response = await api.post(`/users/login`, body);
     
-            window.localStorage.setItem("token", response.data.token)
-            history.replace("/feed")
+            window.localStorage.setItem("token", response.data.token);
+            history.replace("/navers");
         } catch (e) {
             if (e.response.status === 400) {
-                setError("Email e/ou senha inválido(s)")
+                setError("Email e/ou senha incorreto(s)");
+            } else if (e.response.status === 401) {
+                setError("Senha incorreta");
             } else {
-                alert("Login falhou :(")
+                alert("Login falhou :(");
             }
         };
     };
-
+    
     return (
         <S.Wrapper>
             <S.Container>
                 <S.Title>
-                    <svg width="61" height="60" viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg style={{ width: "4.2rem", height: "3.8rem" }} viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M28.8491 45.2685L28.1586 60L40.5882 43.8107L41.8926 31.688L52.0972 21.4834L60.0767 0L38.5933 7.90281L28.312 18.1074L16.1893 19.4118L0 31.8414L14.7315 31.1509L28.8491 45.2685Z" fill="#212121"/>
                         <path d="M15.4216 36.1374L23.8615 44.654L11.3551 49.1809L15.4216 36.1374Z" fill="#212121"/>
                     </svg>
@@ -54,7 +56,7 @@ const LoginPage = () => {
                 </S.Title>
                 <S.Inputs>
                     <form onSubmit={handleSubmitLogin}>
-                        <TextField style={{ marginBottom: "25px" }}
+                        <TextField style={{ marginBottom: "1.5rem" }}
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             variant="outlined"
@@ -87,7 +89,7 @@ const LoginPage = () => {
                                 style={{ 
                                     background: "#212121", 
                                     color: "#fff",
-                                    marginTop: "30px"
+                                    marginTop: "2rem"
                                 }}
                                 variant="contained" 
                                 fullWidth
