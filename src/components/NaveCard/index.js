@@ -76,7 +76,6 @@ const NaveCard = ({ item, getNavers }) => {
                     naverId={item.id}
                     displayModalDeleteNave={() => handleDeleteNave()}
                     displayConfirmDelete={() => confirmDelete()}
-                    getNavers={getNavers}
                 /> 
                 : null
             }
@@ -84,6 +83,7 @@ const NaveCard = ({ item, getNavers }) => {
             {displayConfirmDelete ? 
                 <ConfirmDeleteModal
                     displayConfirmDelete={() => confirmDelete()}
+                    getNavers={getNavers}
                 /> 
                 : null
             }

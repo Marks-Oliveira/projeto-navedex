@@ -2,11 +2,17 @@ import React from 'react';
 
 import * as S from './styles';
 
-const ConfirmDeleteModal = ({displayConfirmDelete}) => {
+const ConfirmDeleteModal = ({ displayConfirmDelete, getNavers }) => {
+    
+    const confirmDelete = () => {
+        displayConfirmDelete();
+        getNavers();
+    };
+
     return (
         <S.Wrapper>
             <S.Container>
-                <S.ExitModal onClick={displayConfirmDelete}>
+                <S.ExitModal onClick={confirmDelete}>
                     X
                 </S.ExitModal>
                 <S.Title><span>Naver excluído</span></S.Title>

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.main`
-    width: 281px;
-    height: 420px;
+    width: 20.6vw;
+    height: 63.5vh;
     display: flex;
     flex-direction: column;
     margin: 2rem 1.8rem;
@@ -28,7 +28,7 @@ export const NameAndOffice = styled.article`
     p {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
-        font-size: 16px;
+        font-size: 1rem;
         line-height: 18px;
         color: #212121;
         margin: 0;
@@ -37,7 +37,7 @@ export const NameAndOffice = styled.article`
 
     span {
         font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
+        font-size: 1rem;
         line-height: 24px;
         color: #212121;
     }

@@ -6,15 +6,15 @@ import * as S from './styles';
 import Button from '@material-ui/core/Button';
 
 const DeleteNaveModal = ({
-    displayModalDeleteNave, 
-    displayConfirmDelete, 
     naverId,
-    getNavers
+    displayModalDeleteNave, 
+    displayConfirmDelete
 }) => {
-
     const token = window.localStorage.getItem('token');
 
-    const handleDeleteNaver = async () => {
+    const handleDelete = async (event) => {
+        event.preventDefault();
+
         const headers = {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -23,8 +23,8 @@ const DeleteNaveModal = ({
 
         try {
             await api.delete(`/navers/${naverId}`, headers);
+            
             displayModalDeleteNave();
-            getNavers();
             displayConfirmDelete();
         } catch (error) {
             alert("Erro ao excluir naver :(");
@@ -60,7 +60,7 @@ const DeleteNaveModal = ({
                             }}
                             variant="contained"
                             size="medium"
-                            onClick={handleDeleteNaver}
+                            onClick={handleDelete}
                         >
                             Excluir
                         </Button>

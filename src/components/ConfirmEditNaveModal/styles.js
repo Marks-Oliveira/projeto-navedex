@@ -16,8 +16,7 @@ export const Wrapper = styled.main`
 export const Container = styled.section`
     position: relative;
     width: 43.5%;
-    height: 35.5%;
-    height: 160px;
+    height: 23.5%;
     background-color: #fff;
     display: flex;
     flex-direction: column;

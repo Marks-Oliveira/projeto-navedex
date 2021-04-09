@@ -8,8 +8,8 @@ export const Wrapper = styled.main`
 `
 
 export const Container = styled.section`
-    width: 448px;
-    height: 408px;
+    width: 33vw;
+    height: 62vh;
     border: 1px solid #212121;
     box-sizing: border-box;
     display: flex;
@@ -29,7 +29,7 @@ export const Title = styled.article`
         font-size: 2.8rem;
         font-weight: bolder;
         color: #212121;
-        margin-bottom: 8px; 
+        margin-bottom: .5rem; 
     }
 `
 
@@ -47,5 +47,5 @@ export const ErrorWarning = styled.div`
 `
 
 export const EnterButton = styled.article`
-    padding-top: 4px;
+    margin-top: .3rem;
 `
