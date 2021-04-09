@@ -13,6 +13,18 @@ export const Container = styled.section`
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 3rem;
+
+    @media(max-width: 1080px) {
+        width: 60%;
+    }
+
+    @media(max-width: 720px) {
+        width: 90%;
+    }
+
+    @media(max-width: 420px) {
+        align-items: center;
+    }
 `
 
 export const Title = styled.article`
@@ -28,6 +40,10 @@ export const Title = styled.article`
 export const Inputs = styled.article`
     width: 100%;
     padding-top: 2rem; 
+
+    @media(max-width: 420px) {
+        margin-left: 2.6rem;
+    }
 `
 
 export const ButtonContent = styled.div`
@@ -35,4 +51,9 @@ export const ButtonContent = styled.div`
     display: flex;
     justify-content: flex-end;
     padding-top: 2rem;
+
+    @media(max-width: 420px) {
+        width: 94%;
+        justify-content: center;
+    }
 `

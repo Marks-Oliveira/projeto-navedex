@@ -19,6 +19,18 @@ export const Container = styled.section`
     background-color: #fff;
     display: flex;
     flex-direction: column;
+
+    @media(max-width: 1080px) {
+        height: 28%;
+    }
+
+    @media(max-width: 720px) {
+        width: 80%;
+    }
+
+    @media(max-width: 420px) {
+        width: 90%;
+    }
 `
 
 export const Title = styled.article`
@@ -29,6 +41,10 @@ export const Title = styled.article`
     color: #212121;
     padding-top: 2rem;
     padding-left: 2rem;
+
+    @media(max-width: 420px) {
+        font-size: 1rem;
+    }
 `
 
 export const Text = styled.article`
@@ -38,6 +54,10 @@ export const Text = styled.article`
     color: #212121;
     padding-top: 1rem;
     padding-left: 2rem;
+
+    @media(max-width: 420px) {
+        font-size: .8rem;
+    }
 `
 
 export const Buttons = styled.article`
@@ -52,4 +72,16 @@ export const ButtonsContent = styled.div`
     display: flex;
     justify-content: space-between;
     padding-right: 2rem;
+
+    @media(max-width: 1080px) {
+        width: 90%;
+    }
+
+    @media(max-width: 720px) {
+        width: 80%;
+    }
+
+    @media(max-width: 420px) {
+        width: 70%;
+    }
 `

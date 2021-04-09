@@ -5,8 +5,8 @@ import * as S from './styles';
 const ConfirmDeleteModal = ({ displayConfirmDelete, getNavers }) => {
     
     const confirmDelete = () => {
-        displayConfirmDelete();
         getNavers();
+        displayConfirmDelete();
     };
 
     return (

@@ -19,6 +19,21 @@ export const Container = styled.section`
     background-color: #fff;
     display: flex;
     position: relative;
+
+    @media(max-width: 1080px) {
+        width: 55%;
+        height: 55%;
+    }
+
+    @media(max-width: 720px) {
+        width: 75%;
+        height: 55%;
+    }
+
+    @media(max-width: 420px) {
+        width: 85%;
+        height: 38%;
+    }
 `
 
 export const ExitModal = styled.div`
@@ -29,6 +44,10 @@ export const ExitModal = styled.div`
     color: #212121;
     font-weight: bold;
     cursor: pointer;
+
+    @media(max-width: 420px) {
+        font-size: .7rem;
+    }
 `
 
 export const NavePhoto = styled.article`
@@ -41,6 +60,10 @@ export const NavePhoto = styled.article`
         object-fit: cover;
         object-position: 100% 9%;
         filter: grayscale(100%);
+
+        @media(max-width: 1080px) {
+            object-position: 78%;
+        }
     }
 `
 
@@ -52,6 +75,10 @@ export const NaveInfos = styled.article`
 export const Infos = styled.div`
     padding: 2rem;
 
+    @media(max-width: 420px) {
+        padding: 1.5rem 1rem;
+    }
+
     p {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
@@ -59,6 +86,11 @@ export const Infos = styled.div`
         line-height: 24px;
         color: #212121;
         margin: .5rem 0;
+
+        @media(max-width: 420px) {
+            font-size: .5rem;
+            margin: 0;
+        }
     }
 
     span {
@@ -66,6 +98,10 @@ export const Infos = styled.div`
         font-size: 1rem;
         line-height: 24px;
         color: #212121;
+
+        @media(max-width: 420px) {
+            font-size: .5rem;
+        }
     }
 `
 
@@ -78,6 +114,11 @@ export const Title = styled.div`
         font-size: 1.5rem;
         line-height: 36px;
         color: #000000;
+
+        @media(max-width: 420px) {
+            font-size: .6rem;
+            margin: 0;
+        }
     }
 
     span {
@@ -85,10 +126,19 @@ export const Title = styled.div`
         font-size: 1rem;
         line-height: 24px;
         color: #212121;
+
+        @media(max-width: 420px) {
+            font-size: .6rem;
+        }
     }
 `
 
 export const Buttons = styled.div`
     margin-top: 4rem;
     margin-left: 2rem;
+
+    @media(max-width: 420px) {
+        margin-top: 0;
+        margin-left: .5rem;
+    }
 `

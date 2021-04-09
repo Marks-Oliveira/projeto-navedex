@@ -20,6 +20,15 @@ export const Container = styled.section`
     background-color: #fff;
     display: flex;
     flex-direction: column;
+
+    @media(max-width: 720px) {
+        width: 80%;
+        height: 20%;
+    }
+
+    @media(max-width: 420px) {
+        height: 18%;
+    }
 `
 
 export const ExitModal = styled.div`
@@ -40,6 +49,10 @@ export const Title = styled.article`
     color: #212121;
     padding-top: 2rem;
     padding-left: 2rem;
+
+    @media(max-width: 420px) {
+        font-size: 1rem;
+    }
 `
 
 export const Text = styled.article`
@@ -49,4 +62,8 @@ export const Text = styled.article`
     color: #212121;
     padding-top: 1rem;
     padding-left: 2rem;
+
+    @media(max-width: 420px) {
+        font-size: 1rem;
+    }
 `

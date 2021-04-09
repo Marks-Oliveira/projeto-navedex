@@ -6,6 +6,23 @@ export const Wrapper = styled.main`
     display: flex;
     flex-direction: column;
     margin: 2rem 1.8rem;
+
+    @media(max-width: 1080px) {
+        width: 25%;
+        height: 30%;
+        margin: 1.5rem;
+    }
+
+    @media(max-width: 720px) {
+        width: 30%;
+        margin: 1.3rem;
+    }
+
+    @media(max-width: 420px) {
+        width: 60%;
+        height: 8%;
+        margin: 1.3rem;
+    }
 `
 
 export const NavePhoto = styled.article`
@@ -17,6 +34,19 @@ export const NavePhoto = styled.article`
         object-fit: cover;
         object-position: 100% 9%;
         filter: grayscale(100%);
+    
+
+        @media(max-width: 1080px) {
+            height: 33vh;
+        }
+
+        @media(max-width: 720px) {
+            height: 26vh;
+        }
+
+        @media(max-width: 420px) {
+            height: 28vh;
+        }
     }
 `
 

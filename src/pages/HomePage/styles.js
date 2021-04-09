@@ -29,6 +29,14 @@ export const Text = styled.div`
         font-size: 2.5rem;
         line-height: 48px;
         color: #212121;
+
+        @media(max-width: 720px) {
+            font-size: 2.2rem;
+        }
+
+        @media(max-width: 420px) {
+            font-size: 2rem;
+        }
     }
 `
 
