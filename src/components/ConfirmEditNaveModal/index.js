@@ -1,12 +1,20 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import * as S from './styles';
 
 const ConfirmEditNaveModal = ({ displayConfirmEdit }) => {
+    const history = useHistory();
+    
+    const closeModal = () => {
+        displayConfirmEdit();
+        history.goBack();
+    };
+
     return (
         <S.Wrapper>
             <S.Container>
-                <S.ExitModal onClick={displayConfirmEdit}>
+                <S.ExitModal onClick={closeModal}>
                     X
                 </S.ExitModal>
                 <S.Title><span>Naver atualizado</span></S.Title>

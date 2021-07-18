@@ -35,7 +35,7 @@ export const Container = styled.section`
 export const Title = styled.article`
     width: 50%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-top: 3rem;
     padding-bottom: 2rem;
@@ -53,23 +53,8 @@ export const Title = styled.article`
         padding-top: 2rem;
     }
 
-    span {
-        font-size: 2.8rem;
-        font-weight: bolder;
-        color: #212121;
-        margin-bottom: .5rem;
-
-        @media(max-width: 1080px) {
-            font-size: 2.3rem;
-        }
-
-        @media(max-width: 720px) {
-            font-size: 1.6rem;
-        }
-
-        @media(max-width: 420px) {
-            font-size: 1.4rem;
-        }
+    img {
+        width: 80%;
     }
 `
 

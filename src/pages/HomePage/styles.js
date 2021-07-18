@@ -46,3 +46,10 @@ export const Cards = styled.article`
     flex-flow: row wrap;
     justify-content: center;
 `
+
+export const Loading = styled.div`
+    width: 100%;
+    margin-top: 8rem;
+    display: flex;
+    justify-content: center;
+`

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import moment from 'moment';
 
+import { calculateAge } from '../../constants/calculateAge';
+import { calculateAdmissionDate } from '../../constants/calculateAdmissionDate';
 import api from '../../services/api';
 import Header from '../../components/Header';
 import ConfirmCreateNaveModal from '../../components/ConfirmCreateNaveModal';
@@ -20,32 +23,41 @@ const CreateNavePage = () => {
     const [urlPhoto, setUrlPhoto] = useState("");
     const [displayConfirmCreate, setDisplayConfirmCreate] = useState(false);
     const history = useHistory();
-
-    const token = window.localStorage.getItem('token');
-
+    
     useEffect(() => {
-        if (!token) {
+        if (window.localStorage.getItem('token') === null) {
           history.push('/');
-        }
-    }, [history, token]);
+        };
+
+    }, [history]);
 
     const confirmCreateNave = () => {
         setDisplayConfirmCreate(!displayConfirmCreate);
     };
 
-    const handleSubmitCreateNaver = async (event) => {
+    const handleCreateNaver = async (event) => {
         event.preventDefault();
 
-        const headers = {
+        if (calculateAge(birthdate) < 18) {
+            toast.error("Idade não pode ser menor que 18 anos");
+            return;
+        };
+
+        if (calculateAdmissionDate(companyTime, birthdate) < 0) {
+            toast.error("Data de admissão inválida");
+            return;
+        };
+        
+        const config = {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${window.localStorage.getItem('token')}`,
             },
         };
 
         const formattedBirthdate = moment(birthdate).format("DD/MM/YYYY");
         const formattedAdmissionDate = moment(companyTime).format("DD/MM/YYYY");
 
-        const body = {
+        const data = {
             name: name,
             birthdate: formattedBirthdate,
             admission_date: formattedAdmissionDate,
@@ -55,7 +67,7 @@ const CreateNavePage = () => {
         };
     
         try {
-            await api.post(`/navers`, body, headers);
+            await api.post(`/navers`, data, config);
             confirmCreateNave();
 
             setName("");
@@ -65,20 +77,30 @@ const CreateNavePage = () => {
             setCompanyTime("");
             setUrlPhoto("");
         } catch (e) {
-            alert("Falha ao criar Naver :(");
+            toast.error("Falha ao criar Naver");
         };
-    };    
+    };
+    
+    const goToHomePage = () => {
+        history.goBack();
+    };
 
     return (
         <S.Wrapper>
             <Header />
             <S.Container>
                 <S.Title>
-                    <ArrowBackIosSharpIcon style={{ marginRight: '.8rem' }} />
+                    <ArrowBackIosSharpIcon 
+                        onClick={goToHomePage} 
+                        style={{ 
+                            marginRight: '.8rem',
+                            cursor: 'pointer'
+                        }} 
+                    />
                     <span>Adicionar Naver</span>
                 </S.Title>
                 <S.Inputs>
-                    <form onSubmit={handleSubmitCreateNaver}>
+                    <form onSubmit={handleCreateNaver}>
                         <TextField style={{ width: '18rem', marginRight: '2rem' }}
                             value={name}
                             onChange={e => setName(e.target.value)}
@@ -90,6 +112,9 @@ const CreateNavePage = () => {
                             InputLabelProps={{ shrink: true }}
                             placeholder="Nome"
                             autoFocus
+                            inputProps={{
+                                minLength: 3
+                            }}
                         />
                         <TextField style={{ width: '18rem' }}
                             value={role}

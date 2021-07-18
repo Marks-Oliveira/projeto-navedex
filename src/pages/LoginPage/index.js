@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 
 import * as S from './styles';
+import logo from '../../assets/logoNave.png';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
@@ -19,6 +26,10 @@ const LoginPage = () => {
             history.replace('/navers');
         }
     },[history]);
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
 
     const handleSubmitLogin = async (event) => {
         event.preventDefault();
@@ -39,7 +50,7 @@ const LoginPage = () => {
             } else if (e.response.status === 401) {
                 setError("Senha incorreta");
             } else {
-                alert("Login falhou :(");
+                toast.error("Ops... Ocorreu um erro");
             }
         };
     };
@@ -48,11 +59,7 @@ const LoginPage = () => {
         <S.Wrapper>
             <S.Container>
                 <S.Title>
-                    <svg style={{ width: "4.2rem", height: "3.8rem" }} viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M28.8491 45.2685L28.1586 60L40.5882 43.8107L41.8926 31.688L52.0972 21.4834L60.0767 0L38.5933 7.90281L28.312 18.1074L16.1893 19.4118L0 31.8414L14.7315 31.1509L28.8491 45.2685Z" fill="#212121"/>
-                        <path d="M15.4216 36.1374L23.8615 44.654L11.3551 49.1809L15.4216 36.1374Z" fill="#212121"/>
-                    </svg>
-                    <span>nave.rs</span>
+                    <img src={logo} alt="Logo Nave" />
                 </S.Title>
                 <S.Inputs>
                     <form onSubmit={handleSubmitLogin}>
@@ -67,21 +74,33 @@ const LoginPage = () => {
                             size="small"
                             type="email"
                             InputLabelProps={{ shrink: true }}
-                            placeholder="Email"
+                            placeholder="exemplo@email.com"
                             autoFocus
                         />
                         <TextField
                             value={password}
                             onChange={e => setPassword(e.target.value)}
+                            type={showPassword ? 'text' : 'password'}
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
                             size="small"
                             label="Senha"
-                            type="password"
                             InputLabelProps={{ shrink: true }}
-                            placeholder="Senha"
+                            placeholder="******"
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton onClick={handleClickShowPassword}>
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                            inputProps={{
+                                minLength: 6
+                            }}
                         />
                         {error && <S.ErrorWarning>{error}</S.ErrorWarning>}
                         <S.EnterButton>

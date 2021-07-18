@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const slideInTop = keyframes`
+    0% {
+        transform: rotateY(30deg) translateY(-300px) skewY(-30deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0deg) translateY(0) skewY(0deg);
+        opacity: 1;
+    }
+`
 
 export const Wrapper = styled.main`
     width: 100%;
@@ -19,6 +30,7 @@ export const Container = styled.section`
     background-color: #fff;
     display: flex;
     position: relative;
+    animation: ${slideInTop} 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
     @media(max-width: 1080px) {
         width: 55%;

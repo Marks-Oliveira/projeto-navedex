@@ -25,26 +25,6 @@ export const Logo = styled.article`
     @media(max-width: 420px) {
         width: 26%;
     }
-
-    span {
-        font-size: 2rem;
-        font-weight: bolder;
-        color: #212121;
-        margin-bottom: .6rem;
-        cursor: pointer;
-
-        @media(max-width: 1080px) {
-            font-size: 1.8rem;
-        }
-
-        @media(max-width: 720px) {
-            font-size: 1.3rem;
-        }
-
-        @media(max-width: 420px) {
-            font-size: 1.2rem;
-        }
-    }
 `
 
 export const ExitButton = styled.article`
